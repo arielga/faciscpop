@@ -1,0 +1,105 @@
+
+<div class="page-header">
+	<h1 class="clearfix">
+		Criar
+		<span class="pull-right">
+			<%= link_to 'Voltar', :back, :class => "label label-warning" %>
+		</span>
+	</h1>
+</div>
+
+<div class="row">
+	<div class="col-md-6">
+		<div class="panel panel-success">
+			<div class="panel-heading clearfix">
+				<h3 class="panel-title">Novo</h3>
+			</div>
+			<%= form_tag({:action => :show}, :multipart => true) do %>
+			<div class="panel-body">
+				<div class="form-inputs pop-form">
+					<div class="form-group">
+						<div class="row">
+							<div class="col-md-6">
+								<%= label_tag 'data', "Data" %><br>
+								<%= date_field_tag 'data', nil, :required => true,:class => 'form-control' %>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<%= label_tag 'nome', "Nome" %><br>
+						<%= text_field_tag "nome", nil, class: 'form-control' %>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-md-6">
+								<%= radio_button_tag 'motivo', '1' %>
+								<%= label_tag 'motivo_1', "Falta de Marcação" %>
+								<br>
+								<%= radio_button_tag 'motivo', '2' %>
+								<%= label_tag 'motivo_2', "Serviço Externo" %>
+								<br>
+								<%= radio_button_tag 'motivo', '3' %>
+								<%= label_tag 'motivo_3', "Marcação Indevida" %>
+								<br>
+								<%= radio_button_tag 'motivo', '4' %>
+								<%= label_tag 'motivo_4', "Faltas" %>
+							</div>
+							<div class="col-md-6">
+								<%= radio_button_tag 'motivo', '5' %>
+								<%= label_tag 'motivo_5', "Saída Antecipada" %>
+								<br>
+								<%= radio_button_tag 'motivo', '6' %>
+								<%= label_tag 'motivo_6', "Saída Durante o Expediente" %>
+								<br>
+								<%= radio_button_tag 'motivo', '7' %>
+								<%= label_tag 'motivo_7', "Afastamento" %>
+								<br>
+								<%= radio_button_tag 'motivo', '8' %>
+								<%= label_tag 'motivo_8', "Atrasos" %>
+							</div>
+						</div>
+					</div>
+								
+					<div class="form-group">
+						<%= label_tag 'justificativa', "Justificativa" %><br>
+						<%= text_area_tag "justificativa", nil, class: 'form-control' %>
+					</div>
+
+					<div class="form-group">
+						<div class="table-responsive">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>Data</th>	
+										<th>Entrada</th>	
+										<th>Saída</th>	
+										<th>Entrada</th>	
+										<th>Saída</th>	
+										<th>Observação</th>	
+									</tr>
+								</thead>
+								<tbody>
+								<% 14.times do |i| %>
+									<tr>
+										<td><%= date_field_tag "data_#{i}", nil, :class => 'form-control data' %></td>
+										<td><%= text_field_tag "entrada1_#{i}", nil, :class => 'form-control mask-hr' %></td>
+										<td><%= text_field_tag "saida1_#{i}", nil, :class => 'form-control mask-hr' %></td>
+										<td><%= text_field_tag "entrada2_#{i}", nil, :class => 'form-control mask-hr' %></td>
+										<td><%= text_field_tag "saida2_#{i}", nil, :class => 'form-control mask-hr' %></td>
+										<td><%= text_field_tag "observacao_#{i}", nil, :class => 'form-control' %></td>
+									</tr>
+								<% end -%>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="panel-footer">  
+				<%= submit_tag "Gerar" ,:class=>"btn btn-success" %>    
+			</div>
+			<% end %>    
+		</div>
+	</div>
+</div>

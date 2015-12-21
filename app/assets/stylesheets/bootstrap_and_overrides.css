@@ -1,0 +1,144 @@
+/*
+  =require twitter-bootstrap-static/bootstrap
+
+  Use Font Awesome icons (default)
+  To use Glyphicons sprites instead of Font Awesome, replace with "require twitter-bootstrap-static/sprites"
+  =require twitter-bootstrap-static/sprites
+  */
+
+
+ @font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('../assets/glyphicons-halflings-regular.eot');
+  src: url('../assets/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
+  url('../assets/glyphicons-halflings-regular.woff') format('woff'),
+  url('../assets/glyphicons-halflings-regular.ttf') format('truetype'),
+  url('../assets/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+
+a.label:visited{
+	color: #fff !important;
+}
+
+
+.label-default{
+	background-color: #bbb
+}
+.label-default[href]:hover, .label-default[href]:focus{
+	background-color: #9A9A9A
+}
+
+
+/***************MENU*****************/
+
+.navbar {
+  border-radius: 0 !important;
+}
+.navbar-inverse .navbar-nav>li>a{
+	color: #ccc
+}
+
+.logo-menu{
+  width: 100px;
+}
+
+/**************MAIN*****************/
+
+main > .container-fluid{
+	padding: 0 30px 35px 30px;
+}
+
+body, html{
+	background-color: #f1f1f1 !important
+}
+
+
+
+/**************TITULO*****************/
+
+.page-header{
+	margin: 30px 0 20px; border-bottom: 1px dotted #ccc;
+}  
+.page-header h1{
+	color: #888;
+}
+.page-header .label{
+	font-size: 30%;
+}
+
+
+/****************PANELS*****************/
+
+.panel{
+  border: none !important; border-left: 4px solid #ccc !important;
+}
+.panel-success{
+  border-left-color: #5cb85c !important;
+}
+.panel-warning{
+  border-left-color: #DAAC72 !important;
+}
+.panel-del{
+  border-right: 4px solid #5cb85c !important; border-left-color: #DAAC72 !important;
+}
+
+
+.panel-heading{
+  background-color: #fff !important; border-color: #ccc !important; border-bottom-style: dotted;
+}
+
+.panel>.panel-heading{
+  padding: 15px;
+}
+.panel-title{
+  float: left;
+}
+
+
+
+/********DROPDONW SUBMENU************/
+
+.dropdown-submenu{
+  position:relative;
+}
+.dropdown-submenu>.dropdown-menu{
+  top:0;left:100%;margin-top:-6px;margin-left:-1px;
+
+  -webkit-border-radius:0 6px 6px 6px;
+  -moz-border-radius:0 6px 6px 6px;
+  border-radius:0 6px 6px 6px;
+}
+.dropdown-submenu>a:after{
+  display:block; content:" "; float:right; width:0; height:0; border-color:transparent; border-style:solid; border-width:5px 0 5px 5px;
+  border-left-color:#cccccc; margin-top:5px; margin-right:-10px;
+}
+.dropdown-submenu:hover>a:after{
+  border-left-color:#555;
+}
+.dropdown-submenu.pull-left{
+  float:none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu{
+  left:-100%;margin-left:10px;
+
+  -webkit-border-radius:6px 0 6px 6px;
+  -moz-border-radius:6px 0 6px 6px;
+  border-radius:6px 0 6px 6px;
+}
+
+.nav .dropdown-submenu.active.open>a, .nav .dropdown-submenu.active.open>a:hover, .nav .dropdown-submenu.active.open>a:focus{
+  background: #428bca;
+}
+
+
+/****************FORMS*****************/
+
+.pop-form .data{
+  width: 158px;
+}
+.pop-form .mask-hr{
+  width: 65px
+}
+
+
+
