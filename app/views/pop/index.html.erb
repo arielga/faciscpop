@@ -1,12 +1,9 @@
 
-
-
-
 		<div class="panel panel-success">
 			<div class="panel-heading clearfix">
 				<h3 class="panel-title">Novo</h3>
 			</div>
-			<%= form_tag({:action => :show, :format => "pdf"}, :multipart => true, :target => "_blank", :method => "get") do %>
+			<%= form_tag({:action => :show, :format => "pdf"}, :multipart => true, :target => "_blank", :method => "post") do %>
 			<div class="panel-body">
 				<div class="form-inputs pop-form">
 					<div class="form-group">

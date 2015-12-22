@@ -21,40 +21,87 @@
 			.absolute{
 				position: absolute;
 			}
-			.w1{
-				width: 10%
+			.w1{ width: 10% }
+			.w2{ width: 20% }
+			.w3{ width: 30% }
+			.w4{ width: 40% }
+			.w6{ width: 60% }
+			.w7{ width: 70% }
+			.w8{ width: 80% }
+			.w9{ width: 90% }
+
+			.linha-dupla{
+				margin-bottom: 5px;
 			}
-			.w4{
-				width: 40%
+			.linha-dupla > div{
+				background: #fff; height: 1px
 			}
-			.w8{
-				width: 80%
+			.linha-dupla > div:first-of-type{
+				background: #000; 
 			}
-			.w9{
-				width: 90%
+			.linha-dupla > div:last-of-type{
+				background: #000; 
 			}
 
+			.tyni-border{
+				padding: 1px; background: #000;
+			}
+			.tyni-border > div{
+				background: #fff; padding: 5px
+			}
 
 			.header{
-				position: relative; text-align: center;
-			}
-			.logo{
-				left: 5px; top: 5px
-			}
-			.numero{
-				right: 5px; top: 5px; text-align: right;
-			}
-			.logo img{
-				width: 70px;	
+				position: relative; margin-bottom: 5px;
 			}
 
-			.header h3, .header p{
+			.header .right{
+				text-align: center;
+			}
+			h3, .header p{
 				margin: 1px 0;
 			} 
+
+			.logo img{
+				width: 150px;	
+			}
+			
+			.titulo{
+				text-align: center;
+			}
 
 		</style>
 	</head>
 	<body>
-		<h3>Teste</h3>
+		<div class="header tyni-border">
+			<div>
+			<div class="left logo w2">
+				<%= wicked_pdf_image_tag("logo-facisc.png") %>
+			</div>
+			<div class="right w8">
+				<h3>Teste</h3>
+				<p>TESTE</p>
+			</div>
+			<br style="clear: both">
+			</div>
+		</div>
+		<div class="linha-dupla"><div></div><div></div><div></div></div>		
+
+		<div class="tyni-border">
+			<div>
+				<h3 class="titulo">Teste</h3>
+				<table>
+					<tr>
+						<td>Data:</td>
+						<td><div class="field-border w3"><div></div></div></td>
+					</tr>
+					<tr>
+						<td>Nome:</td>
+						<td><div class="field-border"><div></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+
 	</body>
 </html>
