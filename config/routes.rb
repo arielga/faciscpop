@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   get 'pop/show' => 'pop#show'
 
   get 'home/index'
-  root 'home#index'
+  
+  root 'pop#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
