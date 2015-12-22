@@ -33,9 +33,9 @@ function initPage() {
 
 
   /**disable btns de submits depois do submit dos forms**/
-  $("form").submit(function(event) {
+  /*$("form").submit(function(event) {
     $(this).find('.btn-success').attr("disabled", 'disabled');
-  });
+  });*/
 
 
   $(".mask-hr").mask("99:99");

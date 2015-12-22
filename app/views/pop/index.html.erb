@@ -14,14 +14,14 @@
 			<div class="panel-heading clearfix">
 				<h3 class="panel-title">Novo</h3>
 			</div>
-			<%= form_tag({:action => :show}, :multipart => true) do %>
+			<%= form_tag({:action => :show, :format => "pdf"}, :multipart => true, :target => "_blank", :method => "get") do %>
 			<div class="panel-body">
 				<div class="form-inputs pop-form">
 					<div class="form-group">
 						<div class="row">
 							<div class="col-md-6">
 								<%= label_tag 'data', "Data" %><br>
-								<%= date_field_tag 'data', nil, :required => true,:class => 'form-control' %>
+								<%= date_field_tag 'data', nil,:class => 'form-control' %>
 							</div>
 						</div>
 					</div>

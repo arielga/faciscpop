@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'pop/index'
 
-  get 'pop/show'
+  get 'pop/show' => 'pop#show'
 
   get 'home/index'
   root 'home#index'
