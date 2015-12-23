@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
 	<head>
+	<meta charset='utf-8' />
 		<style>
 			body{
 				font-size: 12px
@@ -21,10 +22,15 @@
 			.absolute{
 				position: absolute;
 			}
+			.tcel{
+				display: table-cell;
+			}
+
 			.w1{ width: 10% }
 			.w2{ width: 20% }
 			.w3{ width: 30% }
 			.w4{ width: 40% }
+			.w5{ width: 50% }
 			.w6{ width: 60% }
 			.w7{ width: 70% }
 			.w8{ width: 80% }
@@ -47,7 +53,17 @@
 				padding: 1px; background: #000;
 			}
 			.tyni-border > div{
-				background: #fff; padding: 5px
+				 padding: 5px; background: #fff;
+			}
+			.field-border{
+				padding: 1px; background: #000;					
+			}
+			.field-border > div{
+				padding: 2px; background: #ddd;
+			}
+
+			.linha{
+				background: #000; height: 1px;
 			}
 
 			.header{
@@ -66,7 +82,53 @@
 			}
 			
 			.titulo{
+				text-align: center; margin-bottom: 5px;
+			}
+
+			.motivo{
+				font-size: 10px
+			}
+			.motivo li{
+				list-style: none; margin-bottom: 3px
+			}
+			.motivo .tyni-border{
+				margin-right: 5px
+			}
+			.motivo > ul.left{
+				margin-left: 60px;
+			}
+			.motivo > ul.right{
+				margin-right: 100px; margin-left: 0; padding-left: 0; 
+			}
+
+			.tyni-border.left.selected > div{
+				background: #888;
+			}
+
+			.justificativa > div > div{
+				min-height: 150px;
+			}
+
+			
+			.horarios{
+				font-size: 11px; margin-top: 5px;
+			}
+			.horarios tbody td div{
+				height: 15px; text-align: center;
+			}
+
+			.horarios tbody tr:nth-child(odd){
+			    background: #ddd;
+			}
+
+			.assinaturas{
+				margin-top: 60px;
+			}
+			.assinaturas div{
 				text-align: center;
+			}
+			.assinaturas .left:nth-child(2){
+				margin-left: 34px;
 			}
 
 		</style>
@@ -74,34 +136,110 @@
 	<body>
 		<div class="header tyni-border">
 			<div>
-			<div class="left logo w2">
-				<%= wicked_pdf_image_tag("logo-facisc.png") %>
-			</div>
-			<div class="right w8">
-				<h3>Teste</h3>
-				<p>TESTE</p>
-			</div>
-			<br style="clear: both">
+				<div class="left logo w2">
+					<%= wicked_pdf_image_tag("logo-facisc.png") %>
+				</div>
+				<div class="right w8">
+					<h3>Procedimento Operacional Padrão</h3>
+					<p>FORMULÁRIO DE PONTO</p>
+				</div>
+				<br style="clear: both">
 			</div>
 		</div>
+
 		<div class="linha-dupla"><div></div><div></div><div></div></div>		
 
 		<div class="tyni-border">
 			<div>
-				<h3 class="titulo">Teste</h3>
+				<h3 class="titulo">PEDIDO DE AJUSTE DE PONTO</h3>
 				<table>
 					<tr>
-						<td>Data:</td>
-						<td><div class="field-border w3"><div></div></div></td>
+						<td class="w1">Data:</td>
+						<td><div class="field-border w3"><div><%= @pop.data.to_date.strftime("%d/%m/%Y") unless @pop.data.blank? %></div></div></td>
 					</tr>
 					<tr>
-						<td>Nome:</td>
-						<td><div class="field-border"><div></div></div></td>
+						<td class="w1">Nome:</td>
+						<td><div class="field-border"><div><%= @pop.nome %></div></div></td>
 					</tr>
 				</table>
+
+				<div class="motivo">
+					<ul class="left">
+						<li><div class="tyni-border left <%= @pop.motivo == "1" ? "selected" : "" %>"><div></div></div> FALTA DE MARCAÇÃO </li>
+						<li><div class="tyni-border left <%= @pop.motivo == "2" ? "selected" : "" %>"><div></div></div> SERVIÇO EXTERNO </li>
+						<li><div class="tyni-border left <%= @pop.motivo == "3" ? "selected" : "" %>"><div></div></div> MARCAÇÃO INDEVIDA </li>
+						<li><div class="tyni-border left <%= @pop.motivo == "4" ? "selected" : "" %>"><div></div></div> FALTAS </li>
+					</ul>
+					<ul class="right">
+						<li><div class="tyni-border left <%= @pop.motivo == "5" ? "selected" : "" %>"><div></div></div> SAÍDA  ANTECIPADA </li>
+						<li><div class="tyni-border left <%= @pop.motivo == "6" ? "selected" : "" %>"><div></div></div> SAÍDA DURANTE O EXPEDIENTE </li>
+						<li><div class="tyni-border left <%= @pop.motivo == "7" ? "selected" : "" %>"><div></div></div> AFASTAMENTO </li>
+						<li><div class="tyni-border left <%= @pop.motivo == "8" ? "selected" : "" %>"><div></div></div> ATRASOS </li>
+					</ul>
+					<br style="clear: both">
+				</div>
+
+				<div class="justificativa">	
+					Justificativa:
+					<div class="field-border">
+						<div>
+							<%= @pop.justificativa %>
+						</div>
+					</div>
+				</div>
+
+				<div class="tyni-border horarios">
+					<div>
+						<table>
+							<thead>
+								<tr>
+									<th>Data</th>	
+									<th>Entrada</th>	
+									<th>Saída</th>	
+									<th>Entrada</th>	
+									<th>Saída</th>	
+									<th>Observação</th>	
+								</tr>
+							</thead>
+							<tbody>
+							<% 14.times do |i| %>
+								<tr>
+									<td><div><%= @pop.data_horario[i].to_date.strftime("%d/%m/%Y") unless @pop.data_horario[i].blank? %></div></td>
+									<td><div><%= @pop.entrada1[i] %></div></td>
+									<td><div><%= @pop.saida1[i] %></div></td>
+									<td><div><%= @pop.entrada2[i] %></div></td>
+									<td><div><%= @pop.saida2[i] %></div></td>
+									<td><div><%= @pop.observacao[i] %></div></td>
+								</tr>
+							<% end -%>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div class="assinaturas">
+					<div class="left w3">
+						<div class="linha"></div>
+						Colaborador
+					</div>
+					<div class="left w3">
+						<div class="linha"></div>
+						Supervisor
+					</div>
+					<div class="right w3">
+						<div class="linha"></div>
+						Recursos Humanos
+					</div>
+					
+					<br style="clear: both">
+				</div>
+
 			</div>
 		</div>
 
+		
+		<br>
+		<div class="linha-dupla"><div></div><div></div><div></div></div>		
 
 	</body>
 </html>

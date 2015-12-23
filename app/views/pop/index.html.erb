@@ -1,7 +1,7 @@
 
 		<div class="panel panel-success">
 			<div class="panel-heading clearfix">
-				<h3 class="panel-title">Novo</h3>
+				<h3 class="panel-title">PEDIDO DE AJUSTE DE PONTO</h3>
 			</div>
 			<%= form_tag({:action => :show, :format => "pdf"}, :multipart => true, :target => "_blank", :method => "post") do %>
 			<div class="panel-body">
@@ -70,12 +70,12 @@
 								<tbody>
 								<% 14.times do |i| %>
 									<tr>
-										<td><%= date_field_tag "data_#{i}", nil, :class => 'form-control data' %></td>
-										<td><%= text_field_tag "entrada1_#{i}", nil, :class => 'form-control mask-hr' %></td>
-										<td><%= text_field_tag "saida1_#{i}", nil, :class => 'form-control mask-hr' %></td>
-										<td><%= text_field_tag "entrada2_#{i}", nil, :class => 'form-control mask-hr' %></td>
-										<td><%= text_field_tag "saida2_#{i}", nil, :class => 'form-control mask-hr' %></td>
-										<td><%= text_field_tag "observacao_#{i}", nil, :class => 'form-control' %></td>
+										<td><%= date_field_tag "data_horario[]", nil, class: 'form-control data', id: "data_horario_#{i}"  %></td>
+										<td><%= text_field_tag "entrada1[]", nil, class: 'form-control mask-hr', id: "entrada1_#{i}" %></td>
+										<td><%= text_field_tag "saida1[]", nil, class: 'form-control mask-hr', id: "saida1_#{i}" %></td>
+										<td><%= text_field_tag "entrada2[]", nil, class: 'form-control mask-hr', id: "entrada2_#{i}" %></td>
+										<td><%= text_field_tag "saida2[]", nil, class: 'form-control mask-hr', id: "saida2_#{i}" %></td>
+										<td><%= text_field_tag "observacao[]", nil, class: 'form-control', id: "observacao_#{i}" %></td>
 									</tr>
 								<% end -%>
 								</tbody>
